@@ -449,6 +449,7 @@ avtSummationQuery::Execute(vtkDataSet *ds, const int dom)
     bool doAverage = CalculateAverage();
     if (doAverage)
     {
+        std::cout << "Calculate average is true" << std::endl;
         if (pointData)
             arr2 = ds->GetPointData()->GetArray(denomVariableName.c_str());
         else 
@@ -485,6 +486,7 @@ avtSummationQuery::Execute(vtkDataSet *ds, const int dom)
 
     if (sumFromOriginalElement && !volumeDependentBool)
     {
+        std::cout << "Array is volumedependent or customfiltering" << std::endl;
         if (pointData)
         {
             originalNodes = (vtkIntArray *)
@@ -530,6 +532,15 @@ avtSummationQuery::Execute(vtkDataSet *ds, const int dom)
     }
 
     vtkIdList *list = vtkIdList::New();
+
+    if (sumOnlyPositiveValues)
+    {
+        std::cout << "Sum only positive values is true" << std::endl;
+    }
+    else
+    {
+        std::cout << "Sum only positive values is false" << std::endl;
+    }
 
     for (int i = 0 ; i < nvalues ; i++)
     {

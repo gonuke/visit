@@ -174,6 +174,7 @@ avtTotalSurfaceAreaQuery::ApplyFilters(avtDataObject_p inData)
     facelist->SetInput(dob);
     area->SetInput(facelist->GetOutput());
     avtDataObject_p objOut = area->GetOutput();
+    std::cout << "Updating the contract" << std::endl;
     objOut->Update(contract);
 
     std::cout << "Exiting  avtTotalSurfaceAreaQuery::ApplyFilters" << std::endl;
