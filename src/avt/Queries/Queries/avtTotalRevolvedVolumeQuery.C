@@ -90,6 +90,7 @@ avtTotalRevolvedVolumeQuery::~avtTotalRevolvedVolumeQuery()
 avtDataObject_p 
 avtTotalRevolvedVolumeQuery::ApplyFilters(avtDataObject_p inData)
 {
+    std::cout << "Entering avtTotalRevolvedVolumeQuery::ApplyFilters" << std::endl;
     avtContract_p contract = 
         inData->GetOriginatingSource()->GetGeneralContract();
     //
@@ -103,6 +104,7 @@ avtTotalRevolvedVolumeQuery::ApplyFilters(avtDataObject_p inData)
     volume->SetInput(dob);
     avtDataObject_p objOut = volume->GetOutput();
     objOut->Update(contract);
+    std::cout << "Exiting  avtTotalRevolvedVolumeQuery::ApplyFilters" << std::endl;
     return objOut;
 }
 

@@ -84,6 +84,7 @@ avtTotalRevolvedSurfaceAreaQuery::~avtTotalRevolvedSurfaceAreaQuery()
 avtDataObject_p 
 avtTotalRevolvedSurfaceAreaQuery::ApplyFilters(avtDataObject_p inData)
 {
+    std::cout << "Entering avtTotalRevolvedSurfaceAreaQuery::ApplyFilters" << std::endl;
     avtContract_p contract = 
         inData->GetOriginatingSource()->GetGeneralContract();
     //
@@ -108,6 +109,7 @@ avtTotalRevolvedSurfaceAreaQuery::ApplyFilters(avtDataObject_p inData)
     surface_area->SetInput(dob);
     avtDataObject_p objOut = surface_area->GetOutput();
     objOut->Update(contract);
+    std::cout << "Exiting  avtTotalRevolvedSurfaceAreaQuery::ApplyFilters" << std::endl;
     return objOut;
 }
 

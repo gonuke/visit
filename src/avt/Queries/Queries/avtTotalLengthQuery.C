@@ -111,6 +111,7 @@ avtTotalLengthQuery::VerifyInput()
 avtDataObject_p 
 avtTotalLengthQuery::ApplyFilters(avtDataObject_p inData)
 {
+    std::cout << "Entering avtTotalLengthQuery::ApplyFilters" << std::endl;
     avtContract_p contract = 
         inData->GetOriginatingSource()->GetGeneralContract();
 
@@ -149,6 +150,7 @@ avtTotalLengthQuery::ApplyFilters(avtDataObject_p inData)
     avtDataObject_p objOut = length_expr->GetOutput();
     objOut->Update(contract);
 
+    std::cout << "Exiting  avtTotalLengthQuery::ApplyFilters" << std::endl;
     return objOut;
 }
 

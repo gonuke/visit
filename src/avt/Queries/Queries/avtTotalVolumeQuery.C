@@ -139,6 +139,7 @@ avtTotalVolumeQuery::VerifyInput()
 avtDataObject_p 
 avtTotalVolumeQuery::ApplyFilters(avtDataObject_p inData)
 {
+    std::cout << "Entering avtTotalVolumeQuery::ApplyFilters" << std::endl;
     avtContract_p contract =
         inData->GetOriginatingSource()->GetGeneralContract();
 
@@ -165,6 +166,8 @@ avtTotalVolumeQuery::ApplyFilters(avtDataObject_p inData)
     volume->SetInput(dob);
     avtDataObject_p objOut = volume->GetOutput();
     objOut->Update(contract);
+
+    std::cout << "Exiting  avtTotalVolumeQuery::ApplyFilters" << std::endl;
     return objOut;
 }
 

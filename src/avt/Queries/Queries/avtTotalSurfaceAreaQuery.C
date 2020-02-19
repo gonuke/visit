@@ -148,6 +148,7 @@ avtTotalSurfaceAreaQuery::VerifyInput()
 avtDataObject_p 
 avtTotalSurfaceAreaQuery::ApplyFilters(avtDataObject_p inData)
 {
+    std::cout << "Entering avtTotalSurfaceAreaQuery::ApplyFilters" << std::endl;
     avtContract_p contract = 
         inData->GetOriginatingSource()->GetGeneralContract();
 
@@ -175,6 +176,7 @@ avtTotalSurfaceAreaQuery::ApplyFilters(avtDataObject_p inData)
     avtDataObject_p objOut = area->GetOutput();
     objOut->Update(contract);
 
+    std::cout << "Exiting  avtTotalSurfaceAreaQuery::ApplyFilters" << std::endl;
     return objOut;
 }
 
