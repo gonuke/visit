@@ -196,9 +196,10 @@ avtWeightedVariableSummationQuery::ApplyFilters(avtDataObject_p inData)
     {
         if (GetInput()->GetInfo().GetAttributes().GetMeshCoordType() == AVT_XY)
         {
-            std::cout << "WeightedVariableSum using Area" << endl;
+            std::cout << "Started:  Getting the Area" << endl;
             area->SetInput(dob);
             dob = area->GetOutput();
+            std::cout << "Finished: Getting the Area" << endl;
         }
         else 
         {
@@ -227,6 +228,7 @@ avtWeightedVariableSummationQuery::ApplyFilters(avtDataObject_p inData)
     //
     // Cause our artificial pipeline to execute.
     //
+    std::cout << "Executing artificial pipeline" << std::endl;
     avtContract_p contract = 
         inData->GetOriginatingSource()->GetGeneralContract();
 
@@ -249,10 +251,12 @@ avtWeightedVariableSummationQuery::ApplyFilters(avtDataObject_p inData)
         contract->GetDataRequest()->AddSecondaryVariable("avt_weights");
     }
 
+    std::cout << "Updating the contract" << std::endl;
     multiply->GetOutput()->Update(contract);
 
+    avtDataObject_p output_var = multiply->GetOutput();
     std::cout << "Exiting  avtWeightedVariableSummationQuery::ApplyFilters" << std::endl;
-    return multiply->GetOutput();
+    return output_var;
 }
 
 

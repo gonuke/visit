@@ -49,6 +49,8 @@ double avtVMetricArea::Metric (double coords[][3], int type)
         
         case VTK_QUAD:
             return v_quad_area(4, coords);
+        default:
+            std::cout << "Not a triangle or quad!" << std::endl;
     }
 #endif
     return -1;
